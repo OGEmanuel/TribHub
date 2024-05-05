@@ -2,32 +2,129 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+
+    --neutral-n0: 255, 255, 255;
+    --neutral-n10: 250, 250, 251;
+    --neutral-n20: 245, 246, 246;
+    --neutral-n30: 236, 236, 238;
+    --neutral-n40: 224, 225, 227;
+    --neutral-n50: 195, 197, 201;
+    --neutral-n60: 181, 183, 188;
+    --neutral-n70: 169, 171, 177;
+    --neutral-n80: 155, 158, 164;
+    --neutral-n90: 140, 144, 151;
+    --neutral-n100: 126, 130, 138;
+    --neutral-n200: 112, 116, 125;
+    --neutral-n300: 97, 102, 112;
+    --neutral-n400: 85, 90, 102;
+    --neutral-n500: 71, 76, 89;
+    --neutral-n600: 59, 65, 78;
+    --neutral-n700: 42, 49, 63;
+    --neutral-n800: 28, 35, 50;
+    --neutral-n900: 16, 23, 39;
+
+    --primary-s50: 230, 240, 255;
+    --primary-s75: 150, 192, 255;
+    --primary-s100: 107, 166, 255;
+    --primary-s200: 43, 127, 255;
+    --primary-s300: 0, 101, 255;
+    --primary-s400: 0, 71, 179;
+    --primary-s500: 0, 62, 156;
+
+    --purple-01: 151, 71, 255;
+    --purple-02: 224, 200, 255;
+    --purple-03: 245, 237, 255;
+
+    --green-01: 24, 181, 49;
+    --green-02: 186, 233, 194;
+    --green-03: 232, 248, 235;
+
+    --orange-01: 242, 127, 44;
+    --orange-02: 252, 217, 192;
+    --orange-03: 254, 243, 234;
+
+    --red-01: 240, 38, 62;
+    --red-02: 251, 190, 198;
+    --red-03: 254, 234, 236;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.auth-bg {
+  /* background-image: url("/public/images/auth-bg.png"); */
+
+  /* Set the background size, position, etc. as needed */
+  /* background-size: cover; */
+  /* background-position: center; */
+  /* You can set a background color to control opacity */
+  /* background-color: rgba(255, 255, 255, 0.5); */
 }
