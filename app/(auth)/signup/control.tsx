@@ -4,6 +4,7 @@ import { usePageStore } from "@/store/SignupPageStore";
 import AuthCard from "../AuthCard";
 import SignupForm from "./SignupForm";
 import VerifyEmail from "./VerifyEmail";
+import CreatePassword from "./CreatePassword";
 
 const Control = () => {
   const { currPage } = usePageStore();
@@ -15,10 +16,14 @@ const Control = () => {
           <SignupForm />
         </AuthCard>
       )}
-
       {currPage === 1 && (
         <AuthCard header="Check your email" className="gap-2">
           <VerifyEmail />
+        </AuthCard>
+      )}
+      {currPage === 2 && (
+        <AuthCard header="Create your Password" className="gap-[2.125rem]">
+          <CreatePassword />
         </AuthCard>
       )}
     </>

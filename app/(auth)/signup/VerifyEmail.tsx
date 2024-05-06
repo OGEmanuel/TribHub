@@ -33,11 +33,13 @@ import {
 import Link from "next/link";
 import PrimaryButton from "@/components/PrimaryButton";
 import FormNote from "../FormNote";
+import { usePageStore } from "@/store/SignupPageStore";
 
 const inter = Inter({ subsets: ["latin"] });
 
 const VerifyEmail = () => {
   const { email: emailAddress } = useUserDataStore();
+  const { nextPage } = usePageStore();
   const [value, setValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [formValid, setFormValid] = useState(false);
@@ -45,11 +47,14 @@ const VerifyEmail = () => {
   useEffect(() => {
     if (value.length === 5) {
       setFormValid(true);
+    } else {
+      setFormValid(false);
     }
   }, [value]);
 
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (formValid) nextPage(1);
 
     // console.log("OTP form data:", data.pin);
 

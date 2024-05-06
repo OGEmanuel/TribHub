@@ -1,3 +1,4 @@
+import { GeistSans } from "geist/font/sans";
 import Logo from "@/components/logo";
 import { ReactNode } from "react";
 
@@ -17,7 +18,9 @@ const AuthCard = ({
       >
         <div className="flex flex-col gap-2">
           <Logo />
-          <h1 className="text-center font-bold text-neutralN700 text-2xl">
+          <h1
+            className={`text-center font-bold text-neutralN700 text-2xl ${GeistSans.className}`}
+          >
             {header}
           </h1>
         </div>

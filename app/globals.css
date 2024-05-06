@@ -118,13 +118,3 @@
     @apply bg-background text-foreground;
   }
 }
-
-.auth-bg {
-  /* background-image: url("/public/images/auth-bg.png"); */
-
-  /* Set the background size, position, etc. as needed */
-  /* background-size: cover; */
-  /* background-position: center; */
-  /* You can set a background color to control opacity */
-  /* background-color: rgba(255, 255, 255, 0.5); */
-}

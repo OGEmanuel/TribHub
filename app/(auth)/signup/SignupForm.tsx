@@ -1,7 +1,6 @@
 "use client";
 
 import { Inter } from "next/font/google";
-import LabelInput from "@/components/TextInput";
 import { Button } from "@/components/ui/button";
 import { useEffect, useRef, useState } from "react";
 import { z } from "zod";
@@ -10,11 +9,11 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import google from "@/public/google-logo.svg";
 import Image from "next/image";
-import Link from "next/link";
 import { usePageStore } from "@/store/SignupPageStore";
 import { useUserDataStore } from "@/store/SignupDataStore";
 import PrimaryButton from "@/components/PrimaryButton";
 import FormNote from "../FormNote";
+import TextInput from "@/components/TextInput";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -101,7 +100,7 @@ const SignupForm = () => {
             control={form.control}
             name="firstName"
             render={({ field, fieldState }) => (
-              <LabelInput
+              <TextInput
                 label="First name"
                 field={field}
                 fieldState={fieldState}
@@ -115,7 +114,7 @@ const SignupForm = () => {
             control={form.control}
             name="lastName"
             render={({ field, fieldState }) => (
-              <LabelInput
+              <TextInput
                 label="Last name"
                 field={field}
                 fieldState={fieldState}
@@ -129,7 +128,7 @@ const SignupForm = () => {
             control={form.control}
             name="email"
             render={({ field, fieldState }) => (
-              <LabelInput
+              <TextInput
                 type="email"
                 label="Enter email address"
                 field={field}
@@ -159,7 +158,11 @@ const SignupForm = () => {
             <Image src={google} alt="google-logo" />
             Sign up with Google
           </Button>
-          <FormNote question="Already have an account?" linkTo="Log in" link="/" />
+          <FormNote
+            question="Already have an account?"
+            linkTo="Log in"
+            link="/"
+          />
         </div>
       </div>
     </Form>
