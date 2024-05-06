@@ -179,7 +179,7 @@ const CreatePassword = () => {
                     Terms and Conditions
                   </FormLabel>
                   <FormDescription className="text-neutralN400">
-                    By checking this box, you agree to Tribhub's{" "}
+                    By checking this box, you agree to Tribhub&apos;s{" "}
                     <Link href="/" className="font-medium text-primarys300">
                       Terms of Use
                     </Link>{" "}
