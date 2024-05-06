@@ -8,20 +8,36 @@ const PrimaryButton = ({
   children,
   isLoading,
   formValid,
+  className,
+  validated,
 }: {
+  validated?: boolean;
+  className?: string;
   children: ReactNode;
   isLoading: boolean;
-  formValid: boolean;
+  formValid?: boolean;
 }) => {
+  if (validated) {
+    return (
+      <Button
+        type={isLoading ? "button" : "submit"}
+        size={"lg"}
+        className={`${inter.className} ${className} ${
+          formValid
+            ? "bg-primarys300 border-primarys500 border hover:bg-primarys300"
+            : "bg-neutralN50 hover:bg-neutralN50"
+        } rounded-lg w-full`}
+      >
+        {children}
+      </Button>
+    );
+  }
+
   return (
     <Button
       type={isLoading ? "button" : "submit"}
       size={"lg"}
-      className={`${inter.className} ${
-        formValid
-          ? "bg-primarys300 border-primarys500 border hover:bg-primarys300"
-          : "bg-neutralN50 hover:bg-neutralN50"
-      } rounded-lg w-full`}
+      className={`${inter.className} bg-primarys300 border-primarys500 border hover:bg-primarys300 rounded-lg w-full`}
     >
       {children}
     </Button>

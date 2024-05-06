@@ -1,69 +1,47 @@
 "use client";
 
 import { Inter } from "next/font/google";
+import PrimaryButton from "@/components/PrimaryButton";
+import TextInput from "@/components/TextInput";
 import { Button } from "@/components/ui/button";
-import { useEffect, useRef, useState } from "react";
-import { z } from "zod";
 import { Form, FormField } from "@/components/ui/form";
+import Image from "next/image";
+import FormNote from "../FormNote";
+import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import google from "@/public/google-logo.svg";
-import Image from "next/image";
 import { usePageStore } from "@/store/PageStore";
 import { useUserDataStore } from "@/store/SignupDataStore";
-import PrimaryButton from "@/components/PrimaryButton";
-import FormNote from "../FormNote";
-import TextInput from "@/components/TextInput";
+import google from "@/public/google-logo.svg";
+import { useRef, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 const FormSchema = z.object({
-  firstName: z.string().min(1, {
-    message: "First name not long enough.",
-  }),
-  lastName: z.string().min(1, {
-    message: "Last name not long enough.",
-  }),
+  password: z
+    .string()
+    .min(8, {
+      message: "Password must be at least 8 characters",
+    })
+    .trim(),
   email: z.string().email(),
 });
 
-const SignupForm = () => {
+const LoginForm = () => {
   const { nextPage } = usePageStore();
-  const { userData } = useUserDataStore();
   const [isLoading, setIsLoading] = useState(false);
-  const firstNameRef = useRef<HTMLInputElement>(null);
-  const lastNameRef = useRef<HTMLInputElement>(null);
-  const emailRef = useRef<HTMLInputElement>(null);
   const [formValid, setFormValid] = useState(false);
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      firstName: "",
-      lastName: "",
       email: "",
+      password: "",
     },
   });
 
-  useEffect(() => {
-    if (firstNameRef.current && lastNameRef.current && emailRef.current) {
-      if (
-        firstNameRef.current.value.trim() !== "" &&
-        lastNameRef.current.value.trim() !== "" &&
-        emailRef.current.value.includes("@")
-      ) {
-        setFormValid(true);
-      }
-    }
-  }, [
-    firstNameRef.current?.value,
-    lastNameRef.current?.value,
-    emailRef.current?.value,
-  ]);
-
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     nextPage(1);
-    userData(data.firstName, data.lastName, data.email);
     // setIsLoading(true);
     // console.log(data);
     // scrollToTop();
@@ -98,34 +76,6 @@ const SignupForm = () => {
         >
           <FormField
             control={form.control}
-            name="firstName"
-            render={({ field, fieldState }) => (
-              <TextInput
-                label="First name"
-                field={field}
-                fieldState={fieldState}
-                validated
-                required
-                ref={firstNameRef}
-              />
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="lastName"
-            render={({ field, fieldState }) => (
-              <TextInput
-                label="Last name"
-                field={field}
-                fieldState={fieldState}
-                validated
-                required
-                ref={lastNameRef}
-              />
-            )}
-          />{" "}
-          <FormField
-            control={form.control}
             name="email"
             render={({ field, fieldState }) => (
               <TextInput
@@ -135,13 +85,24 @@ const SignupForm = () => {
                 fieldState={fieldState}
                 validated
                 required
-                ref={emailRef}
               />
             )}
           />
-          <PrimaryButton isLoading={isLoading} formValid={formValid} validated>
-            Verify email
-          </PrimaryButton>
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field, fieldState }) => (
+              <TextInput
+                label="Password"
+                field={field}
+                fieldState={fieldState}
+                validated
+                required
+                password
+              />
+            )}
+          />
+          <PrimaryButton isLoading={isLoading}>Login</PrimaryButton>
         </form>
         <div className="space-y-6">
           <div
@@ -156,12 +117,12 @@ const SignupForm = () => {
             className={`rounded-lg w-full font-medium ${inter.className} flex gap-2`}
           >
             <Image src={google} alt="google-logo" />
-            Sign up with Google
+            Login with Google
           </Button>
           <FormNote
-            question="Already have an account?"
-            linkTo="Log in"
-            link="/login"
+            question="Don’t have an account?"
+            linkTo="Sign up for free"
+            link="/signup"
           />
         </div>
       </div>
@@ -169,4 +130,4 @@ const SignupForm = () => {
   );
 };
 
-export default SignupForm;
+export default LoginForm;

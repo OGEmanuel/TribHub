@@ -1,6 +1,6 @@
 "use client";
 
-import { usePageStore } from "@/store/SignupPageStore";
+import { usePageStore } from "@/store/PageStore";
 import AuthCard from "../AuthCard";
 import SignupForm from "./SignupForm";
 import VerifyEmail from "./VerifyEmail";

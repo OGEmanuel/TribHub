@@ -33,7 +33,7 @@ import {
 import Link from "next/link";
 import PrimaryButton from "@/components/PrimaryButton";
 import FormNote from "../FormNote";
-import { usePageStore } from "@/store/SignupPageStore";
+import { usePageStore } from "@/store/PageStore";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -122,7 +122,7 @@ const VerifyEmail = () => {
             />
           </InputOTPGroup>
         </InputOTP>
-        <PrimaryButton isLoading={isLoading} formValid={formValid}>
+        <PrimaryButton isLoading={isLoading} formValid={formValid} validated>
           Continue
         </PrimaryButton>
       </form>

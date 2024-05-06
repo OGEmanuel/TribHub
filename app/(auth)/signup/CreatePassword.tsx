@@ -157,7 +157,7 @@ const CreatePassword = () => {
               <p>One number, symbol or whitespace character</p>
             </div>
           </div>
-          <PrimaryButton isLoading={isLoading} formValid={formValid}>
+          <PrimaryButton isLoading={isLoading} formValid={formValid} validated>
             Sign up
           </PrimaryButton>
           <FormField
