@@ -106,7 +106,9 @@ const LoginForm = () => {
         </form>
         <div className="space-y-6">
           <div
-            className={"flex items-center gap-[1.625rem] text-neutralN400 pt-6"}
+            className={
+              "flex items-center gap-[1.625rem] text-neutralN400 pt-6"
+            }
           >
             <hr className="flex-grow border border-neutralN40" />
             OR
