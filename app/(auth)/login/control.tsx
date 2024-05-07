@@ -12,7 +12,7 @@ const Control = () => {
   return (
     <>
       {currPage === 0 && (
-        <AuthCard header="Welcome back" className="2xl:gap-[2.125rem] gap-4">
+        <AuthCard header="Welcome back" className="gap-[2.125rem]">
           <LoginForm />
         </AuthCard>
       )}
