@@ -26,15 +26,15 @@ const AuthCard = ({
   const { nextPage, currPage } = usePageStore();
 
   return (
-    <>
+    <section className="before:absolute h-screen before:w-full before:top-0 before:h-full md:before:bg-[url('/images/auth-bg.png')] before:opacity-5 before:-z-10 z-50 relative flex flex-col justify-between gap-10">
       <div
-        className={`border border-neutralN40 opacity-100 rounded-3xl w-[28rem] mx-auto my-[7.3125rem] shadow-shadow-02 bg-neutralN0`}
+        className={`md:border border-neutralN40 opacity-100 rounded-3xl w-full max-w-[28rem] md:w-[28rem] mx-auto md:shadow-shadow-02 bg-neutralN0 mt-10`}
       >
-        <div className={`p-6 flex flex-col ${className}`}>
+        <div className={`md:p-6 p-4 flex flex-col ${className}`}>
           <div className="flex flex-col gap-2">
             <Logo />
             <h1
-              className={`text-center font-bold text-neutralN700 text-2xl ${GeistSans.className}`}
+              className={`text-center font-bold text-neutralN700 text-xl md:text-2xl ${GeistSans.className}`}
             >
               {header}
             </h1>
@@ -64,7 +64,7 @@ const AuthCard = ({
       <p className="text-center text-sm text-neutralN100 mb-12">
         Copyright © 2024 Tribhub Inc.
       </p>
-    </>
+    </section>
   );
 };
 

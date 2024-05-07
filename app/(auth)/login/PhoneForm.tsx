@@ -57,10 +57,16 @@ const PhoneForm = () => {
 
   return (
     <div className="space-y-[2.125rem]">
-      <div className="flex justify-between items-center">
-        <div className="flex items-center gap-2 font-semibold">
-          <Image src={avatar} alt={"avatar of user"} />
-          <p className="text-neutralN700">Apex Gamers Club</p>
+      <div className="flex justify-between items-center bg-neutralN10 p-2 rounded-[2.25rem] gap-4">
+        <div className="flex items-center gap-2 font-semibold max-w-[18.375rem]">
+          <Image
+            src={avatar}
+            alt={"avatar of user"}
+            className="rounded-full border border-[#0000001a]"
+          />
+          <p className="text-neutralN700 whitespace-nowrap overflow-hidden text-ellipsis">
+            Apex Gamers Club
+          </p>
           <span
             className={`${inter.className} text-green01 text-xs py-2 px-[10px] border border-green02 rounded-3xl bg-green03 shadow-[inset_0px_3px_0px_0px_rgba(255,255,255,1)]`}
           >
