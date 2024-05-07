@@ -28,7 +28,7 @@ const AuthCard = ({
   return (
     <section className="before:absolute h-screen before:w-full before:top-0 before:h-full md:before:bg-[url('/images/auth-bg.png')] before:opacity-5 before:-z-10 z-50 relative flex flex-col justify-between gap-10">
       <div
-        className={`md:border border-neutralN40 opacity-100 rounded-3xl w-full md:w-[28rem] mx-auto md:shadow-shadow-02 bg-neutralN0 mt-10`}
+        className={`md:border border-neutralN40 opacity-100 rounded-3xl w-full max-w-[28rem] md:w-[28rem] mx-auto md:shadow-shadow-02 bg-neutralN0 mt-10`}
       >
         <div className={`md:p-6 p-4 flex flex-col ${className}`}>
           <div className="flex flex-col gap-2">
