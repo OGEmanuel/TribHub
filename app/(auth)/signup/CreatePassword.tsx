@@ -1,201 +1,222 @@
 "use client";
 
+import { Inter } from "next/font/google";
 import PrimaryButton from "@/components/PrimaryButton";
-import TextInput from "@/components/TextInput";
 import { Checkbox } from "@/components/ui/checkbox";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import MinusIcon from "@/public/icons/MinusIcon";
 import ValidCheck from "@/public/icons/ValidCheck";
-import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { FormEvent, useEffect, useState } from "react";
+import { CheckedState } from "@radix-ui/react-checkbox";
+import ViewIcon from "@/public/icons/ViewIcon";
 
-const FormSchema = z
-  .object({
-    password: z
-      .string()
-      .min(8, {
-        message: "Password must be at least 8 characters",
-      })
-      .trim(),
-    confirmPassword: z.string().trim(),
-    terms: z.boolean({ message: "Accept terms to continue" }),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords don't match",
-    path: ["confirmPassword"],
-  });
+const inter = Inter({ subsets: ["latin"] });
 
 const CreatePassword = () => {
   const [formValid, setFormValid] = useState(false);
-  const [passwordIsValid, setPasswordIsValid] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const passwordRef = useRef<HTMLInputElement>(null);
-  const confirmPasswordRef = useRef<HTMLInputElement>(null);
-  const checkBoxRef = useRef<HTMLButtonElement>(null);
-
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
-    defaultValues: {
-      password: "",
-      confirmPassword: "",
-      terms: false,
-    },
+  const [checked, setChecked] = useState<CheckedState>(false);
+  const [revealPassword, setRevealPassword] = useState(false);
+  const [revealConfirmPassword, setRevealConfirmPassword] = useState(false);
+  const [formInput, setFormInput] = useState({
+    password: "",
+    confirmPassword: "",
   });
 
-  const checkPassword = (value: string) => {
-    const regex =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d!@#$%^&*()_+\-=[\]{};':"\\|,.<>/? ]).{8,}$/;
-    setPasswordIsValid(regex.test(value));
+  const [formError, setFormError] = useState({
+    password: "",
+    confirmPassword: "",
+  });
+
+  const handleRevealpassword = () => {
+    setRevealPassword(!revealPassword);
+  };
+
+  const handleRevealConfirmpassword = () => {
+    setRevealConfirmPassword(!revealConfirmPassword);
+  };
+
+  const handleUserInput = (name: string, value: string | boolean) => {
+    setFormInput({ ...formInput, [name]: value });
+  };
+
+  const isValidLength = (value: string): boolean => {
+    return value.length >= 8;
+  };
+
+  const hasLowercase = (value: string): boolean => {
+    return /[a-z]/.test(value);
+  };
+
+  const hasUppercase = (value: string): boolean => {
+    return /[A-Z]/.test(value);
+  };
+
+  const hasNumberSymbolWhitespace = (value: string): boolean => {
+    return /[\d!@#$%^&*()_+\-=[\]{};':"\\|,.<>/? ]/.test(value);
   };
 
   useEffect(() => {
-    if (confirmPasswordRef.current) {
-      checkPassword(confirmPasswordRef.current.value);
+    if (
+      formInput.confirmPassword.trim() !== "" &&
+      formInput.password.trim() !== "" &&
+      checked
+    ) {
+      setFormValid(true);
+    } else {
+      setFormValid(false);
+    }
+  }, [formInput.password, formInput.confirmPassword, checked]);
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    let inputError = {
+      password: "",
+      confirmPassword: "",
+    };
+
+    if (formInput.password.trim() === "" || formInput.password.length < 8) {
+      inputError.password = "Password should be at least 8 characters long";
     }
 
-    if (confirmPasswordRef.current) {
-      if (
-        confirmPasswordRef.current?.value.length >= 8 &&
-        checkBoxRef.current?.ariaChecked
-      ) {
-        setFormValid(true);
-      } else {
-        setFormValid(false);
-      }
+    if (formInput.password !== formInput.confirmPassword) {
+      inputError.confirmPassword = "Passwords do not match";
     }
-  }, [confirmPasswordRef.current?.value, checkBoxRef.current?.ariaChecked]);
 
-  async function onSubmit(data: z.infer<typeof FormSchema>) {
-    // setIsLoading(true);
-    // console.log(data);
-    // scrollToTop();
-    // try {
-    //   await axios.post("https://formspree.io/f/xzbnygev", data);
-    //   onSetPage();
-    // } catch (error) {
-    //   if (error instanceof AxiosError) {
-    //     const errorData = error.response?.data;
-    //     toast({
-    //       variant: "destructive",
-    //       title: `${errorData.errors}!`,
-    //     });
-    //   } else {
-    //     toast({
-    //       title: "An Error Occurred!",
-    //       variant: "destructive",
-    //       description: "Something went wrong! Please try again.",
-    //     });
-    //   }
-    // } finally {
-    //   setLoading(false);
-    // }
+    setFormError(inputError);
+
+    if (inputError.password || inputError.confirmPassword) {
+      return;
+    }
   }
 
   return (
-    <Form {...form}>
-      <div>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className="flex flex-col space-y-6"
-        >
-          <FormField
-            control={form.control}
-            name="password"
-            render={({ field, fieldState }) => (
-              <TextInput
-                label="Password"
-                field={field}
-                fieldState={fieldState}
-                validated
-                required
-                password
-                ref={passwordRef}
-              />
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="confirmPassword"
-            render={({ field, fieldState }) => (
-              <TextInput
-                label="Confirm Password"
-                field={field}
-                fieldState={fieldState}
-                validated
-                required
-                password
-                ref={confirmPasswordRef}
-              />
-            )}
-          />{" "}
-          <div className="space-y-6 text-neutralN400">
-            <div className="flex gap-2 items-center text-sm">
-              <span>{passwordIsValid ? <ValidCheck /> : <MinusIcon />}</span>
-              <p>At least 8 characters</p>
-            </div>
-            <div className="flex gap-2 items-center text-sm">
-              <span>{passwordIsValid ? <ValidCheck /> : <MinusIcon />}</span>
-              <p>One lowercase character</p>
-            </div>
-            <div className="flex gap-2 items-center text-sm">
-              <span>{passwordIsValid ? <ValidCheck /> : <MinusIcon />}</span>
-              <p>One uppercase character</p>
-            </div>
-            <div className="flex gap-2 items-center text-sm">
-              <span>{passwordIsValid ? <ValidCheck /> : <MinusIcon />}</span>
-              <p>One number, symbol or whitespace character</p>
-            </div>
+    <div>
+      <form
+        onSubmit={handleSubmit}
+        className={`flex flex-col space-y-6 ${inter.className}`}
+      >
+        <div className="flex flex-col space-y-[6px]">
+          <Label className={`text-neutralN700`}>Password</Label>
+          <div className="relative">
+            <Input
+              required
+              type={revealPassword ? "text" : "password"}
+              name={"password"}
+              className={`rounded-lg border text-neutralN900 ${formError.password && "border-red01"}`}
+              value={formInput.password}
+              onChange={({ target }) =>
+                handleUserInput(target.name, target.value)
+              }
+            />
+            <button
+              type="button"
+              onClick={handleRevealpassword}
+              className="absolute right-2.5 top-3"
+            >
+              <ViewIcon />
+            </button>
           </div>
-          <PrimaryButton isLoading={isLoading} formValid={formValid} validated>
-            Sign up
-          </PrimaryButton>
-          <FormField
-            control={form.control}
-            name="terms"
-            render={({ field }) => (
-              <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-                <FormControl>
-                  <Checkbox
-                    required
-                    checked={field.value}
-                    onCheckedChange={field.onChange}
-                    className={`border-neutralN400 data-[state=checked]:border-green01 rounded`}
-                    ref={checkBoxRef}
-                  />
-                </FormControl>
-                <div className="space-y-1 leading-none text-sm">
-                  <FormLabel className="text-neutralN800">
-                    Terms and Conditions
-                  </FormLabel>
-                  <FormDescription className="text-neutralN400">
-                    By checking this box, you agree to Tribhub&apos;s{" "}
-                    <Link href="/" className="font-medium text-primarys300">
-                      Terms of Use
-                    </Link>{" "}
-                    and{" "}
-                    <Link href={"/"} className="font-medium text-primarys300">
-                      Privacy Policy.
-                    </Link>
-                  </FormDescription>
-                </div>
-                <FormMessage />
-              </FormItem>
-            )}
+          <p className="text-sm font-medium text-red01">{formError.password}</p>
+        </div>
+        <div className="flex flex-col space-y-[6px]">
+          <Label className={`text-neutralN700`}>Confirm password</Label>
+          <div className="relative">
+            <Input
+              required
+              type={revealConfirmPassword ? "text" : "password"}
+              name={"confirmPassword"}
+              className={`rounded-lg border text-neutralN900 ${formError.confirmPassword && "border-red01"}`}
+              value={formInput.confirmPassword}
+              onChange={({ target }) =>
+                handleUserInput(target.name, target.value)
+              }
+            />
+            <button
+              type="button"
+              onClick={handleRevealConfirmpassword}
+              className="absolute right-2.5 top-3"
+            >
+              <ViewIcon />
+            </button>
+          </div>
+          <p className="text-sm font-medium text-red01">
+            {formError.confirmPassword}
+          </p>
+        </div>
+        <div className="space-y-6 text-neutralN400">
+          <div className="flex items-center gap-2 text-sm">
+            <span>
+              {isValidLength(formInput.password) ? (
+                <ValidCheck />
+              ) : (
+                <MinusIcon />
+              )}
+            </span>
+            <p>At least 8 characters</p>
+          </div>
+          <div className="flex items-center gap-2 text-sm">
+            <span>
+              {hasLowercase(formInput.password) ? (
+                <ValidCheck />
+              ) : (
+                <MinusIcon />
+              )}
+            </span>
+            <p>One lowercase character</p>
+          </div>
+          <div className="flex items-center gap-2 text-sm">
+            <span>
+              {hasUppercase(formInput.password) ? (
+                <ValidCheck />
+              ) : (
+                <MinusIcon />
+              )}
+            </span>
+            <p>One uppercase character</p>
+          </div>
+          <div className="flex items-center gap-2 text-sm">
+            <span>
+              {hasNumberSymbolWhitespace(formInput.password) ? (
+                <ValidCheck />
+              ) : (
+                <MinusIcon />
+              )}
+            </span>
+            <p>One number, symbol or whitespace character</p>
+          </div>
+        </div>
+        <PrimaryButton isLoading={isLoading} formValid={formValid} validated>
+          Sign up
+        </PrimaryButton>
+
+        <div className="flex flex-row items-start space-x-3 space-y-0">
+          <Checkbox
+            required
+            name="checkbox"
+            checked={checked}
+            onCheckedChange={setChecked}
+            className={`rounded border-neutralN400 data-[state=checked]:border-green01`}
           />
-        </form>
-      </div>
-    </Form>
+          <div className="space-y-1 text-sm leading-none">
+            <Label className="text-neutralN800">Terms and Conditions</Label>
+            <p className="leading-5 text-neutralN400">
+              By checking this box, you agree to Tribhub&apos;s{" "}
+              <Link href="/" className="font-medium text-primarys300">
+                Terms of Use
+              </Link>{" "}
+              and{" "}
+              <Link href={"/"} className="font-medium text-primarys300">
+                Privacy Policy.
+              </Link>
+            </p>
+          </div>
+        </div>
+      </form>
+    </div>
   );
 };
 
