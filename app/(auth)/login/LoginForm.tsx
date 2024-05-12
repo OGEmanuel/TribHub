@@ -1,6 +1,5 @@
 "use client";
 
-import { Inter } from "next/font/google";
 import PrimaryButton from "@/components/PrimaryButton";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -11,11 +10,11 @@ import { FormEvent, useEffect, useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import ViewIcon from "@/public/icons/ViewIcon";
-
-const inter = Inter({ subsets: ["latin"] });
+import { useRouter } from "next/navigation";
 
 const LoginForm = () => {
-  const { nextPage } = usePageStore();
+  const { nextLoginPage } = usePageStore();
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [formValid, setFormValid] = useState(false);
   const [revealPassword, setRevealPassword] = useState(false);
@@ -70,7 +69,7 @@ const LoginForm = () => {
       return;
     }
 
-    nextPage(1);
+    router.push('/dashboard')
   }
 
   return (
@@ -127,7 +126,7 @@ const LoginForm = () => {
         </div>
         <Button
           size={"lg"}
-          className={`w-full rounded-lg font-medium ${inter.className} flex gap-2`}
+          className={`w-full rounded-lg font-medium flex gap-2`}
         >
           <Image src={google} alt="google-logo" />
           Login with Google

@@ -1,6 +1,5 @@
 "use client";
 
-import { Inter } from "next/font/google";
 import Image from "next/image";
 import email from "@/public/images/email.png";
 import { useUserDataStore } from "@/store/SignupDataStore";
@@ -14,11 +13,10 @@ import PrimaryButton from "@/components/PrimaryButton";
 import FormNote from "../FormNote";
 import { usePageStore } from "@/store/PageStore";
 
-const inter = Inter({ subsets: ["latin"] });
 
 const VerifyEmail = () => {
   const { email: emailAddress } = useUserDataStore();
-  const { nextPage } = usePageStore();
+  const { nextSignupPage } = usePageStore();
   const [value, setValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [formValid, setFormValid] = useState(false);
@@ -33,11 +31,11 @@ const VerifyEmail = () => {
 
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (formValid) nextPage(1);
+    if (formValid) nextSignupPage(1);
   }
 
   return (
-    <div className={`${inter.className}`}>
+    <div>
       <div className="mx-auto mb-2 w-max">
         <Image src={email} alt="envelope with a papaer plane" />
       </div>

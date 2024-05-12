@@ -1,4 +1,4 @@
-import { Inter } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
 import avatar from "@/public/images/avatar-2.png";
 import whatsapp from "@/public/whatsapp.svg";
 import Image from "next/image";
@@ -6,10 +6,11 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { FormEvent, useEffect, useState } from "react";
 import PrimaryButton from "@/components/PrimaryButton";
-
-const inter = Inter({ subsets: ["latin"] });
+import { useRouter } from "next/navigation";
+import InvertedImage from "@/components/InvertedImage";
 
 const PhoneForm = () => {
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [formValid, setFormValid] = useState(false);
   const [formInput, setFormInput] = useState("");
@@ -41,25 +42,22 @@ const PhoneForm = () => {
     if (inputError) {
       return;
     }
+
+    router.push("/dashboard");
   }
 
   return (
     <div className="space-y-[2.125rem]">
       <div className="flex items-center justify-between gap-4 rounded-[2.25rem] bg-neutralN10 p-2">
         <div className="flex max-w-[18.375rem] items-center gap-2 font-semibold">
-          <div className="relative h-10 w-10">
-            <Image
-              src={avatar}
-              alt={"avatar of user"}
-              fill
-              className="rounded-full border border-[#0000001a]"
-            />
-          </div>
-          <p className="overflow-hidden text-ellipsis whitespace-nowrap text-neutralN700">
+          <InvertedImage src={avatar} />
+          <p
+            className={`overflow-hidden text-ellipsis whitespace-nowrap text-neutralN700 ${GeistSans.className}`}
+          >
             Apex Gamers Club
           </p>
           <span
-            className={`${inter.className} rounded-3xl border border-green02 bg-green03 px-[10px] py-2 text-xs text-green01 shadow-[inset_0px_3px_0px_0px_rgba(255,255,255,1)]`}
+            className={`rounded-3xl border border-green02 bg-green03 px-[10px] py-2 text-xs text-green01 shadow-[inset_0px_3px_0px_0px_rgba(255,255,255,1)]`}
           >
             Paid
           </span>
@@ -68,12 +66,10 @@ const PhoneForm = () => {
       </div>
       <form onSubmit={handleSubmit} className="flex flex-col space-y-6">
         <fieldset className={"space-y-2"}>
-          <label className={`text-neutralN700 ${inter.className}`}>
-            Enter your phone number
-          </label>
+          <label className={`text-neutralN700`}>Enter your phone number</label>
 
           <PhoneInput
-            inputClass={`!w-full !py-2.5 !rounded-lg !h-auto !pl-20 ${inter.className}`}
+            inputClass={`!w-full !py-2.5 !rounded-lg !h-auto !pl-20`}
             dropdownClass="!rounded-lg"
             placeholder="7040000000"
             country={"ng"}

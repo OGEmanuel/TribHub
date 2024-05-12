@@ -7,21 +7,21 @@ import VerifyEmail from "./VerifyEmail";
 import CreatePassword from "./CreatePassword";
 
 const Control = () => {
-  const { currPage } = usePageStore();
+  const { currSignupPage } = usePageStore();
 
   return (
     <>
-      {currPage === 0 && (
+      {currSignupPage === 0 && (
         <AuthCard header="Create an account" className="gap-[2.125rem]">
           <SignupForm />
         </AuthCard>
       )}
-      {currPage === 1 && (
+      {currSignupPage === 1 && (
         <AuthCard header="Check your email" className="gap-2">
           <VerifyEmail />
         </AuthCard>
       )}
-      {currPage === 2 && (
+      {currSignupPage === 2 && (
         <AuthCard header="Create your Password" className="gap-[2.125rem]">
           <CreatePassword />
         </AuthCard>
