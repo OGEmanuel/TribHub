@@ -26,21 +26,21 @@ const AuthCard = ({
   const { nextPage, currPage } = usePageStore();
 
   return (
-    <section className="before:absolute h-screen before:w-full before:top-0 before:h-full md:before:bg-[url('/images/auth-bg.png')] before:opacity-5 before:-z-10 z-50 relative flex flex-col justify-between gap-10">
+    <section className="relative z-50 flex h-screen flex-col justify-between gap-10 before:absolute before:top-0 before:-z-10 before:h-full before:w-full before:opacity-5 md:before:bg-[url('/images/auth-bg.png')]">
       <div
-        className={`md:border border-neutralN40 opacity-100 rounded-3xl w-full max-w-[28rem] md:w-[28rem] mx-auto md:shadow-shadow-02 bg-neutralN0 mt-10`}
+        className={`mx-auto mt-10 w-full max-w-[28rem] rounded-3xl border-neutralN40 bg-neutralN0 opacity-100 md:w-[28rem] md:border md:shadow-shadow-02`}
       >
-        <div className={`md:p-6 p-4 flex flex-col ${className}`}>
+        <div className={`flex flex-col p-4 md:p-6 ${className}`}>
           <div className="flex flex-col gap-2">
             <Logo />
             <h1
-              className={`text-center font-bold text-neutralN700 text-xl md:text-2xl ${GeistSans.className}`}
+              className={`text-center text-xl font-bold text-neutralN700 md:text-2xl ${GeistSans.className}`}
             >
               {header}
             </h1>
             {subHeader && (
               <p
-                className={`${inter.className} text-sm text-neutralN400 text-center`}
+                className={`${inter.className} text-center text-sm text-neutralN400`}
               >
                 {subHeader}
               </p>
@@ -52,8 +52,8 @@ const AuthCard = ({
           <div className="border-t border-neutralN40 p-6">
             <Button
               onClick={() => nextPage(1)}
-              className={`w-full rounded-lg border border-primarys100 bg-primarys50 text-primarys400 font-medium hover:bg-primarys50 flex gap-2 ${inter.className}`}
-              size={"lg"}
+              className={`flex w-full gap-2 rounded-lg border border-primarys100 bg-primarys50 font-medium text-primarys400 hover:bg-primarys50 ${inter.className}`}
+              size={"xl"}
             >
               I am a member of a community
               <ArrowRightIcon />
@@ -61,7 +61,7 @@ const AuthCard = ({
           </div>
         )}
       </div>
-      <p className="text-center text-sm text-neutralN100 mb-12">
+      <p className="mb-12 text-center text-sm text-neutralN100">
         Copyright © 2024 Tribhub Inc.
       </p>
     </section>

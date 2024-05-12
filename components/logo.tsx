@@ -1,10 +1,9 @@
-import Image from "next/image";
-import logo from "@/public/logo.svg";
+import LogoIcon from "@/public/logo";
 
 const Logo = () => {
   return (
-    <div className="text-center flex flex-col items-center gap-1 font-semibold text-neutralN700">
-      <Image src={logo} alt="logo" />
+    <div className="flex flex-col items-center gap-1 text-center font-semibold text-neutralN700">
+      <LogoIcon />
       <p>TribHub</p>
     </div>
   );
