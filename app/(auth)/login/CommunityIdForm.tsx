@@ -7,7 +7,7 @@ import { FormEvent, useEffect, useState } from "react";
 const CommunityIdForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [formValid, setFormValid] = useState(false);
-  const { nextPage } = usePageStore();
+  const { nextLoginPage } = usePageStore();
 
   const [formInput, setFormInput] = useState({
     communityID: "",
@@ -51,14 +51,14 @@ const CommunityIdForm = () => {
     }
 
     // If no errors, proceed with form submission
-    nextPage(1);
+    nextLoginPage(1);
   }
 
   return (
     <div>
       <form onSubmit={handleSubmit} className="flex flex-col space-y-6">
         <div className="flex flex-col space-y-[6px]">
-          <Label className={`text-neutralN700`}>First name</Label>
+          <Label className={`text-neutralN700`}>Community ID</Label>
           <Input
             required
             type={"text"}
@@ -74,7 +74,7 @@ const CommunityIdForm = () => {
           </p>
         </div>
         <PrimaryButton isLoading={isLoading} formValid={formValid} validated>
-          Login
+          Continue
         </PrimaryButton>
       </form>
     </div>

@@ -1,6 +1,5 @@
 "use client";
 
-import { Inter } from "next/font/google";
 import PrimaryButton from "@/components/PrimaryButton";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -11,10 +10,13 @@ import Link from "next/link";
 import { FormEvent, useEffect, useState } from "react";
 import { CheckedState } from "@radix-ui/react-checkbox";
 import ViewIcon from "@/public/icons/ViewIcon";
+import { useRouter } from "next/navigation";
+import { usePageStore } from "@/store/PageStore";
 
-const inter = Inter({ subsets: ["latin"] });
 
 const CreatePassword = () => {
+  const { nextSignupPage } = usePageStore();
+  const router = useRouter();
   const [formValid, setFormValid] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [checked, setChecked] = useState<CheckedState>(false);
@@ -91,13 +93,16 @@ const CreatePassword = () => {
     if (inputError.password || inputError.confirmPassword) {
       return;
     }
+
+    router.push("/login");
+    nextSignupPage(0);
   }
 
   return (
     <div>
       <form
         onSubmit={handleSubmit}
-        className={`flex flex-col space-y-6 ${inter.className}`}
+        className={`flex flex-col space-y-6`}
       >
         <div className="flex flex-col space-y-[6px]">
           <Label className={`text-neutralN700`}>Password</Label>

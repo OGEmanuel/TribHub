@@ -7,16 +7,16 @@ import CommunityIdForm from "./CommunityIdForm";
 import PhoneForm from "./PhoneForm";
 
 const Control = () => {
-  const { currPage } = usePageStore();
+  const { currLoginPage } = usePageStore();
 
   return (
     <>
-      {currPage === 0 && (
+      {currLoginPage === 0 && (
         <AuthCard header="Welcome back" className="gap-[2.125rem]">
           <LoginForm />
         </AuthCard>
       )}
-      {currPage === 1 && (
+      {currLoginPage === 1 && (
         <AuthCard
           header="Enter community ID"
           className="gap-[2.125rem]"
@@ -25,7 +25,7 @@ const Control = () => {
           <CommunityIdForm />
         </AuthCard>
       )}
-      {currPage === 2 && (
+      {currLoginPage === 2 && (
         <AuthCard
           header="Enter your phone number"
           subHeader="Enter phone number to access into your membership profile."

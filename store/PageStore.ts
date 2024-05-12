@@ -1,11 +1,17 @@
 import { create } from "zustand";
 
 interface PageState {
-  currPage: number;
-  nextPage: (by: number) => void;
+  currSignupPage: number;
+  currLoginPage: number;
+  nextSignupPage: (by: number) => void;
+  nextLoginPage: (by: number) => void;
+
 }
 
 export const usePageStore = create<PageState>()((set) => ({
-  currPage: 0,
-  nextPage: (by) => set((state) => ({ currPage: state.currPage + by })),
+  currSignupPage: 0,
+  currLoginPage: 0,
+  nextSignupPage: (by) => set((state) => ({ currSignupPage: state.currSignupPage + by })),
+  nextLoginPage: (by) => set((state) => ({ currLoginPage: state.currLoginPage + by })),
+
 }));

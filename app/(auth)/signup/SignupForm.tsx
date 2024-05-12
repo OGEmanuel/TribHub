@@ -1,6 +1,5 @@
 "use client";
 
-import { Inter } from "next/font/google";
 import { Button } from "@/components/ui/button";
 import { FormEvent, useEffect, useState } from "react";
 import google from "@/public/google-logo.svg";
@@ -12,10 +11,8 @@ import FormNote from "../FormNote";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-const inter = Inter({ subsets: ["latin"] });
-
 const SignupForm = () => {
-  const { nextPage } = usePageStore();
+  const { nextSignupPage } = usePageStore();
   const { userData } = useUserDataStore();
   const [isLoading, setIsLoading] = useState(false);
   const [formValid, setFormValid] = useState(false);
@@ -83,15 +80,12 @@ const SignupForm = () => {
 
     // If no errors, proceed with form submission
     userData(formInput.firstName, formInput.lastName, formInput.email);
-    nextPage(1);
+    nextSignupPage(1);
   }
 
   return (
     <div>
-      <form
-        onSubmit={handleSubmit}
-        className={`flex flex-col space-y-6 ${inter.className}`}
-      >
+      <form onSubmit={handleSubmit} className={`flex flex-col space-y-6`}>
         <div className="flex flex-col space-y-[6px]">
           <Label className={`text-neutralN700`}>First name</Label>
           <Input
