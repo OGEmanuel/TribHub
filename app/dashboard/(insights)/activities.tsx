@@ -38,7 +38,7 @@ const Activities = () => {
             No activity
           </h3>
           <p className="text-sm text-neutralN400">
-            It looks like there's no activity to display at the moment.
+            It looks like there&apos;s no activity to display at the moment.
           </p>
         </div>
       </div>
