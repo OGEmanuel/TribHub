@@ -1,10 +1,11 @@
-import Header from "./DashboardHeader";
-import GetStarted from "./GetStarted";
+import QuickAction from "./QuickAction";
+import Insight from "./(insights)/insights";
 
 const DashboardHomePage = () => {
   return (
     <>
-      <GetStarted/>
+      <QuickAction />
+      <Insight />
     </>
   );
 };
