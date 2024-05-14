@@ -20,9 +20,11 @@ const Navbar = () => {
   const pathname = usePathname();
 
   return (
-    <nav className={`mx-2 flex items-center justify-between py-4 pl-12 pr-8`}>
-      <Logo className="gap-2" />
-      <div className="flex items-center gap-2 rounded-xl border !border-neutralN40 bg-neutralN10 p-1">
+    <nav className={`mx-2 flex items-center px-8 py-4`}>
+      <div className="w-full">
+        <Logo className="gap-2" />
+      </div>
+      <div className="flex w-full items-center gap-2 rounded-xl border !border-neutralN40 bg-neutralN10 p-1">
         <NavLink href={"/dashboard"}>
           <DashboardIcon
             stroke={`${pathname === "/dashboard" ? "#2A313F" : "#555A66"}`}
@@ -48,7 +50,7 @@ const Navbar = () => {
           Wallet
         </NavLink>
       </div>
-      <div className={`flex items-center gap-4`}>
+      <div className={`flex w-full items-center justify-end gap-4`}>
         <div className="flex items-center gap-2">
           <InvertedImage src={avatar} />
           <div className="text-sm">

@@ -1,11 +1,11 @@
 import { GeistSans } from "geist/font/sans";
 import SecondaryButton from "@/components/SecondaryButton";
-import CommunitiesIcon from "@/public/icons/CommunitiesIcon";
 import PayoutCardIcon from "@/public/icons/PayoutCardIcon";
+import CommunityIcon from "@/public/icons/CommunityIcon";
 
 const QuickAction = () => {
   return (
-    <div className="mb-6 rounded-2xl border !border-neutralN40">
+    <div className="mb-6 rounded-2xl border !border-neutralN40 bg-neutralN0">
       <h2
         className={`${GeistSans.className} border-b border-b-neutralN30 py-6 pl-4 text-lg font-medium text-neutralN700`}
       >
@@ -14,7 +14,7 @@ const QuickAction = () => {
       <div className="p-4">
         <div className="flex items-center justify-between border-b !border-neutralN40 pb-4">
           <div className="flex gap-2">
-            <CommunitiesIcon stroke="#0065FF" />
+            <CommunityIcon />
             <div>
               <h3
                 className={`${GeistSans.className} font-medium text-neutralN700`}
