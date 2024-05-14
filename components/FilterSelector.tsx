@@ -42,6 +42,7 @@ const FilterSelector = ({ filterTabs }: { filterTabs: FilterTabs[] }) => {
 
     return (
       <SecondaryButton
+        key={tab.id}
         onClick={() => {
           router.replace(tabUrl, { scroll: false });
         }}
