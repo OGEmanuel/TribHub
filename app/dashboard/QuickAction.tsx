@@ -1,6 +1,5 @@
 "use client";
 
-import { faker } from "@faker-js/faker";
 import { GeistSans } from "geist/font/sans";
 import SecondaryButton from "@/components/SecondaryButton";
 import PayoutCardIcon from "@/public/icons/PayoutCardIcon";
@@ -14,7 +13,7 @@ const QuickAction = () => {
 
   // for (let i = 0; i < 3; i++) {
   //   data.push({
-      // id: faker.string.uuid(),
+  // id: faker.string.uuid(),
   //     // status: Math.random() < 0.5 ? "Checked" : "Unchecked",
   //     commuintyStatus: "unchecked",
   //     payoutStatus: "unchecked",

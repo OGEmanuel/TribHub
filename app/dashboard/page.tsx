@@ -3,7 +3,7 @@ import Insight from "./(insights)/insights";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Soucity - Home",
+  title: "Tribhub - Home",
 };
 
 const DashboardHomePage = () => {

@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Soucity - Communities",
-  };
+  title: "Tribhub - Communities",
+};
 const CommuinitesHomePage = () => {
   return (
     <>

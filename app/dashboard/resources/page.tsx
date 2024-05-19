@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Soucity - Resources",
+  title: "Tribhub - Resources",
 };
 
 const ResourcesHomePage = () => {
