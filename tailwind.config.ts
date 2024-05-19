@@ -103,7 +103,6 @@ const config = {
         "shadow-03": "0px 8px 24px 0px rgba(42, 49, 63, 0.05)",
         "shadow-035": "0px 4px 16px 0px rgba(42, 49, 63, 0.03)",
       },
-
       keyframes: {
         "accordion-down": {
           from: { height: "0" },

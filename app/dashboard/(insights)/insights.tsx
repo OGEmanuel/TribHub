@@ -2,7 +2,7 @@ import { GeistSans } from "geist/font/sans";
 import InsightIcon from "@/public/icons/InsightIcon";
 import TabView from "./TabView";
 import Metrics from "./metrics";
-import Activities from "./activities";
+import Activities from "./Activities/activities";
 
 const Insight = () => {
   return (

@@ -46,7 +46,7 @@ const FilterSelector = ({ filterTabs }: { filterTabs: FilterTabs[] }) => {
         onClick={() => {
           router.replace(tabUrl, { scroll: false });
         }}
-        className={`bg-transparent text-neutralN700 hover:bg-transparent ${isActive ? "!border-neutralN40 text-neutralN700 shadow-[0px_8px_8px_0px_rgba(42,49,63,0.08),0px_4px_16px_0px_rgba(42,49,63,0.03)]" : "!border-transparent text-neutralN400"}`}
+        className={`bg-transparent capitalize text-neutralN700 hover:bg-transparent ${isActive ? "!border-neutralN40 text-neutralN700 shadow-[0px_8px_8px_0px_rgba(42,49,63,0.08),0px_4px_16px_0px_rgba(42,49,63,0.03)]" : "!border-transparent text-neutralN400"}`}
       >
         {tab.name}
       </SecondaryButton>
