@@ -3,7 +3,7 @@ import EmptyActivityIcon from "@/public/icons/EmptyActivityIcon";
 
 const EmptyState = () => {
   return (
-    <div className="mx-auto my-16 flex w-[17.75rem] flex-col gap-2 text-center">
+    <div className="mx-auto my-16 flex max-w-[17.75rem] flex-col gap-2 text-center">
       <div className="mx-auto w-max">
         <EmptyActivityIcon />
       </div>

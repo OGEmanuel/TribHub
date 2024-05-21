@@ -7,9 +7,9 @@ const Header = () => {
   const { firstName } = useUserDataStore();
 
   return (
-    <div className="pb-6 pl-[6.25rem]">
+    <div className="pb-4 md:pb-6 md:pl-[6.25rem]">
       <h1
-        className={`${GeistSans.className} text-2xl font-medium text-neutralN700`}
+        className={`${GeistSans.className} text-lg font-medium text-neutralN700 md:text-2xl`}
       >
         Hi, {firstName === "" ? "Abolaji" : firstName}
       </h1>

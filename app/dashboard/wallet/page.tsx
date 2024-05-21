@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Tribhub - Wallet",
+  title: "TribHub - Wallet",
 };
 const WalletHomePage = () => {
   return (

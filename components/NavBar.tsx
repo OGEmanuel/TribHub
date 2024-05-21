@@ -1,22 +1,18 @@
 "use client";
 
-import { GeistSans } from "geist/font/sans";
 import { ComponentProps } from "react";
 import Logo from "./logo";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import avatar from "@/public/images/avatar.png";
-import { useUserDataStore } from "@/store/SignupDataStore";
-import ArrowDownIcon from "@/public/icons/ArrowDownIcon";
-import InvertedImage from "./InvertedImage";
 import DashboardIcon from "@/public/icons/DashboardIcon";
 import CommunitiesIcon from "@/public/icons/CommunitiesIcon";
 import ResourcesIcon from "@/public/icons/ResourcesIcon";
 import WalletIcon from "@/public/icons/WalletIcon";
+import ProfileBox from "./ProfileBox";
 
 const Navbar = () => {
-  const { firstName, lastName, email } = useUserDataStore();
   const pathname = usePathname();
 
   return (
@@ -50,25 +46,7 @@ const Navbar = () => {
           Wallet
         </NavLink>
       </div>
-      <div className={`flex w-full items-center justify-end gap-4`}>
-        <div className="flex items-center gap-2">
-          <InvertedImage src={avatar} />
-          <div className="text-sm">
-            <p
-              className={`${GeistSans.className} font-medium text-neutralN700`}
-            >
-              {lastName.trim() === "" ? "Olunuga" : lastName}{" "}
-              {firstName.trim() === "" ? "Abolaji" : firstName}
-            </p>
-            <p className="text-neutralN400">
-              {email.trim() === "" ? "bojnuga@gmail.com" : email}
-            </p>
-          </div>
-        </div>
-        <button>
-          <ArrowDownIcon />
-        </button>
-      </div>
+      <ProfileBox />
     </nav>
   );
 };

@@ -22,23 +22,32 @@ const Activities = () => {
     });
   }
   return (
-    <div className="flex flex-col gap-6 border-t !border-neutralN30 pt-2">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4 p-2">
-          <h3
-            className={`${GeistSans.className} border-r !border-neutralN30 pr-4 font-medium text-neutralN700`}
-          >
-            Activities
-          </h3>
-          <div className="flex items-center gap-2">
+    <div className="flex flex-col border-t !border-neutralN30 pt-4 md:gap-6 md:pt-2">
+      <div className="flex w-full justify-between md:items-center">
+        <div className="flex w-full flex-col gap-2 md:flex-row md:items-center md:gap-4 md:p-2">
+          <div className="flex items-center justify-between">
+            {" "}
+            <h3
+              className={`${GeistSans.className} !border-neutralN30 pr-4 font-medium text-neutralN700 md:border-r`}
+            >
+              Activities
+            </h3>
+            {/* The code below this comment is for mobile view only */}
+            <div className="md:hidden">
+              <Dropdown />
+            </div>
+            {/* The code above this comment is for mobile view only */}
+          </div>
+
+          <div className="flex w-full items-center gap-2 md:w-auto">
             <SearchIcon />
             <Input
               placeholder="search by name and community"
-              className="min-w-[14.5625rem] border-none p-0 placeholder:text-neutralN80"
+              className="border-none p-0 text-sm placeholder:text-neutralN80 md:min-w-[15rem] md:text-base"
             />
           </div>
         </div>
-        <div className="flex items-center gap-2 p-2">
+        <div className="hidden items-center gap-2 p-2 md:flex">
           <p className="font-medium text-neutralN700">All</p>
           <Dropdown />
         </div>

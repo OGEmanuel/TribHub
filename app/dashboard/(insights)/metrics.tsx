@@ -5,7 +5,7 @@ import { GeistSans } from "geist/font/sans";
 
 const Metrics = () => {
   return (
-    <div className="mb-6 flex justify-between">
+    <div className="mb-6 flex flex-col md:flex-row md:justify-between">
       <div className="w-full">
         <div
           className={`${GeistSans.className} flex items-center justify-between font-medium`}
@@ -22,7 +22,7 @@ const Metrics = () => {
         </div>
         <p className="text-[1.75rem] font-semibold text-neutralN700">324</p>
       </div>
-      <div className="mx-4 my-[5.5px] border border-neutralN30"></div>
+      <div className="my-4 border border-neutralN30 md:mx-4 md:my-[5.5px]"></div>
       <div className="w-full">
         <div
           className={`${GeistSans.className} flex items-center justify-between font-medium`}
@@ -39,7 +39,7 @@ const Metrics = () => {
         </div>
         <p className="text-[1.75rem] font-semibold text-neutralN700">5</p>
       </div>
-      <div className="mx-4 my-[5.5px] border border-neutralN30"></div>
+      <div className="my-4 border border-neutralN30 md:mx-4 md:my-[5.5px]"></div>
       <div className="w-full">
         <div
           className={`${GeistSans.className} flex items-center justify-between font-medium`}
@@ -56,7 +56,7 @@ const Metrics = () => {
         </div>
         <p className="text-[1.75rem] font-semibold text-neutralN700">24</p>
       </div>
-      <div className="mx-4 my-[5.5px] border border-neutralN30"></div>
+      <div className="my-4 border border-neutralN30 md:mx-4 md:my-[5.5px]"></div>
       <div className="w-full">
         <div
           className={`${GeistSans.className} flex items-center justify-between font-medium`}

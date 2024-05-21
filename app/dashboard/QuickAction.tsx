@@ -11,28 +11,19 @@ const QuickAction = () => {
   const [communityStatus, setCommunityStatus] = useState(false);
   const [payoutStatus, setPayoutStatus] = useState(false);
 
-  // for (let i = 0; i < 3; i++) {
-  //   data.push({
-  // id: faker.string.uuid(),
-  //     // status: Math.random() < 0.5 ? "Checked" : "Unchecked",
-  //     commuintyStatus: "unchecked",
-  //     payoutStatus: "unchecked",
-  //   });
-  // }
-
   return (
     <>
       {!payoutStatus && !communityStatus && (
-        <div className="mb-6 rounded-2xl border !border-neutralN40 bg-neutralN0">
+        <div className="mb-4 rounded-2xl border !border-neutralN40 bg-neutralN0 md:mb-6">
           <h2
-            className={`${GeistSans.className} border-b border-b-neutralN30 py-6 pl-4 text-lg font-medium text-neutralN700`}
+            className={`${GeistSans.className} border-b border-b-neutralN30 p-4 font-medium text-neutralN700 md:py-6 md:pl-4 md:text-lg`}
           >
             Get started
           </h2>
           <div className="flex flex-col gap-4 p-4">
             {!communityStatus && (
-              <div className="flex items-center justify-between border-b !border-neutralN40 pb-4">
-                <div className="flex gap-2">
+              <div className="flex flex-col items-start gap-4 border-b !border-neutralN40 pb-4 md:flex-row md:items-center md:justify-between md:gap-0">
+                <div className="flex flex-col gap-2 md:flex-row">
                   <CommunityIcon />
                   <div>
                     <h3
@@ -55,8 +46,8 @@ const QuickAction = () => {
               </div>
             )}
             {!payoutStatus && (
-              <div className="flex items-center justify-between">
-                <div className="flex gap-2">
+              <div className="flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between md:gap-0">
+                <div className="flex flex-col gap-2 md:flex-row">
                   <PayoutCardIcon />
                   <div>
                     <h3
