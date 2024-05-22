@@ -32,7 +32,7 @@ export default function SideBarMobile() {
         </div>
         <span className="sr-only">Open</span>
       </SheetTrigger>
-      <SheetContent side={"left"}>
+      <SheetContent side={"left"} className="h-screen min-h-screen">
         <SheetHeader className="flex items-center justify-between border-b !border-neutralN40 px-4 py-[1.55rem]">
           <Logo className="gap-2" />
           <SheetClose>
@@ -40,7 +40,7 @@ export default function SideBarMobile() {
             <span className="sr-only">Close</span>
           </SheetClose>
         </SheetHeader>
-        <div className="flex !h-[calc(100vh-14.958125rem)] !flex-col !justify-between px-4 py-6">
+        <div className="flex min-h-[40rem] flex-col justify-between px-4 py-6">
           <div className="space-y-4">
             <NavLink href={"/dashboard"}>
               <button
