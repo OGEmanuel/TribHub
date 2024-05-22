@@ -63,7 +63,7 @@ export const NavLink = (
       className={cn(
         "flex items-center gap-2 border px-4 py-[10px] font-medium text-neutralN400 transition-all",
         pathname === props.href
-          ? "rounded-lg !border-neutralN40 bg-neutralN0 text-neutralN700 shadow-[0px_4px_16px_0px_rgba(42,49,63,0.031),0px_8px_8px_0px_rgba(43,50,64,0.078)]"
+          ? "rounded-lg !border-neutralN40 bg-neutralN0 text-neutralN700 shadow-shadow-02 md:shadow-[0px_4px_16px_0px_rgba(42,49,63,0.031),0px_8px_8px_0px_rgba(43,50,64,0.078)]"
           : "!border-transparent",
       )}
     />
