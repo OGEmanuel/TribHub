@@ -23,10 +23,9 @@ import { useState } from "react";
 
 const headerHeight = 239.33; // Adjust this value according to your header height
 const footerHeight = 213.66; // Adjust this value according to your footer height
-const padding = 30;
 
 // Calculate the dynamic height for the content
-const dynamicContentHeight = `calc(100vh - ${headerHeight}px - ${footerHeight}px + ${padding * 2}px)`;
+const dynamicContentHeight = `calc(100vh - ${headerHeight}px - ${footerHeight}px)`;
 
 export default function SideBarMobile() {
   const [open, setOpen] = useState(false);
