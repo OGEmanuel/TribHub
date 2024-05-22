@@ -40,7 +40,7 @@ export default function SideBarMobile() {
         </div>
         <span className="sr-only">Open</span>
       </SheetTrigger>
-      <SheetContent side={"left"} className="h-max border-neutralN40">
+      <SheetContent side={"left"} className="h-full border-neutralN40">
         <SheetHeader className="flex items-center justify-between border-b !border-neutralN40 bg-neutralN0 px-4 py-[1.55rem]">
           <Logo className="gap-2" />
           <SheetClose>
@@ -48,10 +48,10 @@ export default function SideBarMobile() {
             <span className="sr-only">Close</span>
           </SheetClose>
         </SheetHeader>
-        <div className="flex flex-col bg-neutralN10 px-4 py-6">
+        <div className="flex h-full flex-col justify-between bg-neutralN10 px-4 py-6">
           <div
             className="space-y-4"
-            style={{ marginBottom: dynamicContentHeight }}
+            // style={{ marginBottom: dynamicContentHeight }}
           >
             <NavLink href={"/dashboard"}>
               <button
