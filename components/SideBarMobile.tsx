@@ -21,13 +21,6 @@ import { usePathname } from "next/navigation";
 import ProfileBox from "./ProfileBox";
 import { useState } from "react";
 
-const headerHeight = 239.33; // Adjust this value according to your header height
-const footerHeight = 213.66; // Adjust this value according to your footer height
-const padding = 24;
-
-// Calculate the dynamic height for the content
-const dynamicContentHeight = `calc(100vh - ${headerHeight}px - ${footerHeight}px + ${padding * 2}px)`;
-
 export default function SideBarMobile() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
@@ -48,11 +41,8 @@ export default function SideBarMobile() {
             <span className="sr-only">Close</span>
           </SheetClose>
         </SheetHeader>
-        <div className="flex h-full flex-col justify-between bg-neutralN10 px-4 py-6">
-          <div
-            className="space-y-4"
-            // style={{ marginBottom: dynamicContentHeight }}
-          >
+        <div className="flex h-[calc(100%-4.640625rem)] flex-col justify-between bg-neutralN10 px-4 py-6">
+          <div className="space-y-4">
             <NavLink href={"/dashboard"}>
               <button
                 className="flex items-center gap-2"
