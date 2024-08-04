@@ -13,7 +13,7 @@ const Tabs = [
 
 const TabView = () => {
   return (
-    <div className="scrollbar flex justify-between overflow-auto rounded-xl border !border-neutralN40 bg-neutralN10 p-1">
+    <div className="scrollbar flex justify-between gap-2 overflow-auto rounded-xl border !border-neutralN40 bg-neutralN10 p-1">
       <Suspense fallback={null}>
         <FilterSelector filterTabs={Tabs} />
       </Suspense>
